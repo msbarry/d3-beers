@@ -1,6 +1,10 @@
+d3.select('body')
+  .append('div')
+    .attr('id', 'beer-list');
+
 d3.csv("beer.csv", function(beers) {
-  var traits = ["ABV", "IBU", "SRM", "Rating"];
   var colors = [];
+  // SRM to RGB
   colors[0] = 'rgb(250, 250, 210)';
   colors[1] = 'rgb(250, 250, 160)';
   colors[2] = 'rgb(250, 250, 105)';
@@ -50,21 +54,20 @@ d3.csv("beer.csv", function(beers) {
   var m = [40, 40, 40, 40];
   var percentFormat = d3.format(".0%");
   var leftAxis = d3.svg.axis().orient("left");
-  var rightAxis = d3.svg.axis().orient("right");
   var percentAxis = d3.svg.axis().orient("left").tickFormat(percentFormat);
   var axes = {
     ABV: percentAxis,
     IBU: leftAxis,
     SRM: leftAxis,
-    Rating: rightAxis
+    Rating: leftAxis
   };
-  var traits = d3.keys(axes);
+  var traits = ["SRM", "ABV", "IBU", "Rating"];
   var percent = d3.format(".0%");
 
   var draw = function () {
     d3.selectAll("svg").remove();
 
-    var w = window.innerWidth - m[1] - m[3],
+    var w = window.innerWidth * 0.7 - m[1] - m[3],
         h = window.innerHeight - m[0] - m[2] - 20;
 
     var x = d3.scale.ordinal().domain(traits).rangePoints([0, w]),
@@ -161,12 +164,52 @@ d3.csv("beer.csv", function(beers) {
     function brush() {
       var actives = traits.filter(function(p) { return !y[p].brush.empty(); }),
           extents = actives.map(function(p) { return y[p].brush.extent(); });
+      var activedata = [];
       foreground.classed("fade", function(d) {
-        return !actives.every(function(p, i) {
+        var filteredOut = !actives.every(function(p, i) {
           return extents[i][0] <= d[p] && d[p] <= extents[i][1];
         });
+        if (!filteredOut) {
+          activedata.push(d);
+        }
+        return filteredOut;
       });
+      displayBeerList(activedata);
     }
+
+    function createTableRow(row) {
+      row.append("div")
+        .attr('class', 'name')
+        .text(function (d) { return d.name; });
+      row.append("div")
+        .attr('class', 'stat')
+        .text(function (d) { return d.SRM; });
+      row.append("div")
+        .attr('class', 'stat')
+        .text(function (d) { return d.ABV; });
+      row.append("div")
+        .attr('class', 'stat')
+        .text(function (d) { return d.IBU; });
+      row.append("div")
+        .attr('class', 'stat')
+        .text(function (d) { return d.Rating; });
+    }
+
+    function displayBeerList(activedata) {
+      var s = function (a, b) { return d3.descending(a.Rating, b.Rating); };
+      var list = d3.select("#beer-list")
+        .selectAll("div.beer")
+        .data(activedata);
+
+      list.enter()
+        .append("div")
+        .attr('class', 'beer')
+        .call(createTableRow);
+
+      list.exit().remove();
+    }
+
+    displayBeerList(beers);
   };
   draw();
   window.onresize = draw;
