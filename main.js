@@ -60,10 +60,10 @@ d3.csv("beer.csv", function(beers) {
     var line = d3.svg.line().interpolate("cardinal"),
         foreground;
 
-    var svg = d3.select("body").append("svg:svg")
+    var svg = d3.select("body").append("svg")
         .attr("width", w + m[1] + m[3])
         .attr("height", h + m[0] + m[2])
-      .append("svg:g")
+      .append("g")
         .attr("transform", "translate(" + m[3] + "," + m[0] + ")");
 
     // Create a scale and brush for each trait.
@@ -81,11 +81,11 @@ d3.csv("beer.csv", function(beers) {
     });
 
     // Add foreground lines.
-    foreground = svg.append("svg:g")
+    foreground = svg.append("g")
         .attr("class", "foreground")
       .selectAll("path")
         .data(beers)
-      .enter().append("svg:path")
+      .enter().append("path")
         .attr("d", path)
         .attr("stroke", function(d) { return SRM_TO_RGB[d.SRM]; })
         .each(function (d) { d.line = d3.select(this); })
@@ -94,12 +94,20 @@ d3.csv("beer.csv", function(beers) {
 
     // add hover title to each line
     foreground
-      .append("svg:title").text(function (d) { return d.name; });
+      .append("title").text(function (d) {
+        return [
+          d.name,
+          'ABV: ' + percentFormat(d.ABV),
+          'SRM: ' + d.SRM,
+          'IBU: ' + d.IBU,
+          'Rating: ' + d.Rating
+        ].join('\n'); 
+      });
 
     // Add a group element for each trait.
     var g = svg.selectAll(".trait")
         .data(traits)
-      .enter().append("svg:g")
+      .enter().append("g")
         .attr("class", "trait")
         .attr("transform", function(d) { return "translate(" + x(d) + ")"; })
         .call(d3.behavior.drag()
@@ -109,16 +117,16 @@ d3.csv("beer.csv", function(beers) {
         .on("dragend", dragend));
 
     // Add an axis and title.
-    g.append("svg:g")
+    g.append("g")
         .attr("class", "axis")
         .each(function(d) { d3.select(this).call(axes[d].scale(y[d])); })
-      .append("svg:text")
+      .append("text")
         .attr("text-anchor", "middle")
         .attr("y", -9)
         .text(String);
 
     // Add a brush for each axis.
-    g.append("svg:g")
+    g.append("g")
         .attr("class", "brush")
         .each(function(d) { d3.select(this).call(y[d].brush); })
       .selectAll("rect")
