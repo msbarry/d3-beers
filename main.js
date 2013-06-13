@@ -1,7 +1,3 @@
-d3.select('body')
-  .append('div')
-    .attr('id', 'beer-list');
-
 d3.csv("beer.csv", function(beers) {
   var colors = [];
   // SRM to RGB
@@ -36,21 +32,9 @@ d3.csv("beer.csv", function(beers) {
   colors[28] = 'rgb(18, 9, 8)';
   colors[29] = 'rgb(13, 6, 5)';
   colors[30] = 'rgb(8, 3, 2)';
-  colors[31] = 'rgb(8, 3, 2)';
-  colors[32] = 'rgb(8, 3, 2)';
-  colors[33] = 'rgb(8, 3, 2)';
-  colors[34] = 'rgb(8, 3, 2)';
-  colors[35] = 'rgb(8, 3, 2)';
-  colors[36] = 'rgb(8, 3, 2)';
-  colors[37] = 'rgb(8, 3, 2)';
-  colors[38] = 'rgb(8, 3, 2)';
-  colors[39] = 'rgb(8, 3, 2)';
-  colors[40] = 'rgb(8, 3, 2)';
-  colors[41] = 'rgb(8, 3, 2)';
-  colors[42] = 'rgb(8, 3, 2)';
-  colors[43] = 'rgb(8, 3, 2)';
-  colors[44] = 'rgb(8, 3, 2)';
-  colors[45] = 'rgb(8, 3, 2)';
+  for (var i = 31; i < 100; i++) {
+    colors[i] = 'rgb(8, 3, 2)';
+  }
   var m = [40, 40, 40, 40];
   var percentFormat = d3.format(".0%");
   var leftAxis = d3.svg.axis().orient("left");
@@ -103,7 +87,8 @@ d3.csv("beer.csv", function(beers) {
         .data(beers)
       .enter().append("svg:path")
         .attr("d", path)
-        .attr("stroke", function(d) { return colors[d.SRM]; });
+        .attr("stroke", function(d) { return colors[d.SRM]; })
+        .each(function (d) { d.line = d3.select(this); });
 
     foreground
       .append("svg:title").text(function (d) { return d.name; });
@@ -177,33 +162,37 @@ d3.csv("beer.csv", function(beers) {
       displayBeerList(activedata);
     }
 
+    function addCell(row, clazz, attr, format) {
+      format = format || function (d) { return d };
+      row.append("div")
+        .attr('class', clazz)
+        .text(function (d) { return format(d[attr]); });
+    }
+
     function createTableRow(row) {
-      row.append("div")
-        .attr('class', 'name')
-        .text(function (d) { return d.name; });
-      row.append("div")
-        .attr('class', 'stat')
-        .text(function (d) { return d.SRM; });
-      row.append("div")
-        .attr('class', 'stat')
-        .text(function (d) { return d.ABV; });
-      row.append("div")
-        .attr('class', 'stat')
-        .text(function (d) { return d.IBU; });
-      row.append("div")
-        .attr('class', 'stat')
-        .text(function (d) { return d.Rating; });
+      row
+        .attr('class', 'beer')
+        .style('color', function (d) { return colors[d.SRM]; })
+        // .style('color', function (d) { return d.SRM < 17 ? 'black' : 'lightgray'; })
+        .html("")
+
+      addCell(row, 'name', 'name');
+      addCell(row, 'stat', 'SRM');
+      addCell(row, 'stat', 'ABV', percentFormat);
+      addCell(row, 'stat', 'IBU');
+      addCell(row, 'stat', 'Rating');
     }
 
     function displayBeerList(activedata) {
-      var s = function (a, b) { return d3.descending(a.Rating, b.Rating); };
+      activedata.sort(function (a, b) { return d3.descending(a.Rating, b.Rating); })
+      activedata = activedata.slice(0, 10);
       var list = d3.select("#beer-list")
-        .selectAll("div.beer")
-        .data(activedata);
+        .selectAll(".beer")
+        .data(activedata)
+        .call(createTableRow);
 
       list.enter()
-        .append("div")
-        .attr('class', 'beer')
+        .append('div')
         .call(createTableRow);
 
       list.exit().remove();

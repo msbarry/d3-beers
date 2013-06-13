@@ -41,7 +41,7 @@ svg {
 }
 
 
-#beer-list {
+.beer-list {
   width: 27%;
   max-height: 90%;
   position: absolute;
@@ -52,19 +52,24 @@ svg {
   margin-left: 10px;
 }
 
-#beer-list .beer {
+.beer-list .beer {
+  float: left;
   line-height: 1.5em;
-  background: #eee;
+  /*background: #eee;*/
   width: 100%;
   margin-bottom: 1px;
 }
 
-#beer-list .beer div.name {
+.beer-list .beer div {
+  float: left;
+}
+.beer-list .beer div.name {
   display: inline-block;
   width: 60%;
 }
 
-#beer-list .beer div.stat {
+.beer-list .beer div.stat {
+  text-align: right;
   display: inline-block;
   width: 10%;
 }
