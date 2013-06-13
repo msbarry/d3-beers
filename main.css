@@ -23,6 +23,12 @@ svg {
   stroke-opacity: .05;
 }
 
+.foreground path.hover {
+  stroke-width: 3px;
+  stroke-opacity: 1;
+  stroke: blue;
+}
+
 .brush .extent {
   fill-opacity: .3;
   stroke: #fff;
@@ -55,9 +61,12 @@ svg {
 .beer-list .beer {
   float: left;
   line-height: 1.5em;
-  /*background: #eee;*/
   width: 100%;
   margin-bottom: 1px;
+}
+
+.beer.hover {
+  background: #dde;
 }
 
 .beer-list .beer div {
