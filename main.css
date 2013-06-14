@@ -15,7 +15,7 @@ body {
 .linecontainer path {
   fill: none;
   stroke-opacity: .5;
-  stroke-width: 2px;
+  stroke-width: 1.5px;
 }
 
 .linecontainer path.fade {

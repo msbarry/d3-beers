@@ -1,88 +1,208 @@
-name,ABV,IBU,SRM,Rating
-Samuel Adams Longshot Dortmunder Style Export,0.055,27,5,53
-Samuel Adams Imperial Double Bock,0.095,21,16,50
-Samuel Adams Longshot Grape Pale Ale,0.0535,5,5,33
-Samuel Adams Summer Ale,0.053,23,5,64
-Samuel Adams White Ale,0.054,15,3,64
-Samuel Adams Blackberry Witbier,0.055,5,5,38
-Samuel Adams Holiday Porter,0.058,27,25,78
-Samuel Adams Longshot Mile High Barleywine,0.098,52,15,85
-Samuel Adams Triple Bock,0.18,52,15,35
-Samuel Adams Boston Ale,0.051,32,8,61
-Samuel Adams Noble Pils,0.052,33,4,81
-Samuel Adams Brown Ale,0.054,30,27,67
-Samuel Adams James Madison Dark Wheat Ale,0.057,14,19,50
-Samuel Adams Cherry Wheat,0.054,5,6,33
-Samuel Adams Cranberry Lambic,0.059,5,5,21
-Samuel Adams Rauch Bier,0.05,25,17,55
-Samuel Adams Coffee Stout,0.058,55,35,66
-Samuel Adams Cream Stout,0.049,55,29,86
-Samuel Adams Vienna Style,0.049,24,13,65
-Mackeson Xxx Stout,0.049,55,35,90
-Samuel Adams Longshot Old Ben Ale,0.09,45,16,85
-Samuel Adams Imperial Pilsner,0.088,35,4,90
-Samuel Adams India Pale Ale (ipa),0.059,50,11,71
-Samuel Adams George Washington Porter,0.057,27,25,55
-Samuel Adams Honey Porter,0.053,27,25,61
-Samuel Adams Black Lager,0.049,27,45,80
-Samuel Adams Scotch Ale,0.054,18,13,73
-Samuel Adams Longshot Weizenbock,0.072,22,17,88
-Samuel Adams Winter Lager,0.058,22,17,78
-Samuel Adams Coastal Wheat,0.053,23,6,35
-Samuel Adams Hefeweizen,0.054,23,5,59
-Samuel Adams Utopias,0.27,52,15,90
-Samuel Adams Boston Lager,0.049,20,4,67
-Sam Adams Light,0.041,20,4,23
-Samuel Adams Irish Red Ale,0.055,23,10,60
-Harpoon 100 Barrel Series #30 – Island Creek Oyster Stout,0.045,37,32,50
-Harpoon 100 Barrel Series #04 - Barleywine,0.103,52,15,73
-Harpoon 100 Barrel Series #10 - Triticus,0.115,52,15,88
-Harpoon Belgian Pale Ale,0.059,25,6,73
-Harpoon Ufo White,0.048,15,4,48
-Harpoon Leviathan Imperial IPA,0.1,90,12,88
-Harpoon Munich Dark,0.056,23,21,75
-Harpoon Summer Beer,0.05,25,6,38
-Harpoon 100 Barrel Series #30 - Island Creek Oyster Stout,0.055,55,35,86
-Harpoon IPA,0.059,50,8,80
-Harpoon Celtic Ale,0.054,25,8,65
-Harpoon Octoberfest,0.055,24,11,66
-Harpoon 100 Barrel Series #22 - Steve Stewarts Firth Of Forth,0.054,18,13,68
-Harpoon 100 Barrel Series #08 - Smoked Porter,0.057,25,17,76
-Harpoon Brown,0.052,30,27,50
-Ufo Hefeweizen,0.048,19,6,85
-Dogfish Head Weedwacker Wit,0.045,15,3,48
-Dogfish Head Golden Era (shower),0.09,35,4,86
-Dogfish Head Theobroma,0.09,6,17,86
-Dogfish Head Snow Blower Belgian Ale,0.06,25,11,55
-Dogfish Head Red And White,0.1,50,6,87
-Dogfish Head Lawnmower Light,0.043,18,4,26
-Dogfish Head Zwaanendale,0.08,24,18,85
-Dogfish Head Au Courant,0.07,5,5,55
-Dogfish Head Sahtea,0.09,6,12,88
-Dogfish Head Burton Baton,0.1,90,10,90
-Dogfish Head Squall IPA,0.09,90,10,89
-Dogfish Head Festina Lente,0.07,5,5,63
-Dogfish Head Chocolate Mild,0.045,17,18,8
-Dogfish Head Chateau Jiahu,0.09,6,6,80
-Dog Fish Head Midas Touch,0.09,12,6,90
-Dogfish Head Liquor De Malt,0.07,25,5,60
-Dogfish Head 120 Minute IPA,0.18,85,15,83
-Dogfish Head Olde School Barleywine,0.15,52,15,72
-Dogfish Head My Antonia,0.075,35,4,88
-Dogfish Head 90 Minute Imperial IPA,0.09,90,8,91
-Dogfish Head Aprihop,0.07,5,5,75
-Dogfish Head 60 Minute IPA,0.06,60,8,90
-Dogfish Head Noble Rot,0.09,18,2,65
-Dogfish Head World Wide Stout,0.18,70,35,92
-Dogfish Head Raison D Etre,0.08,50,8,88
-Dogfish Head Bitches Brew,0.1,70,35,58
-Dogfish Head World Wide Stout 2001/2003-present (18%),0.18,70,35,91
-Dogfish Head Black And Blue,0.1,5,6,86
-Dogfish Head Oyster Stout,0.045,37,32,86
-"Dogfish Head World Wide Stout 2003 (21%, Ca And Uk Release)",0.21,70,35,91
-Dogfish Head Festina Peche,0.045,15,8,76
-Dogfish Head Chicory Stout,0.052,22,35,89
-Dogfish Head Palo Santo Marron,0.12,85,15,90
-Dogfish Head Immort Ale,0.11,52,15,90
-Dogfish Head Raison D Extra,0.185,85,15,90
-Dogfish Head Fort,0.18,49,5,83
+name,ABV,IBU,SRM,Rating,
+Samuel Adams Longshot Dortmunder Style Export,0.055,27,5,53,
+Samuel Adams Imperial Double Bock,0.095,21,16,50,
+Samuel Adams Longshot Grape Pale Ale,0.0535,5,5,33,
+Samuel Adams Summer Ale,0.053,23,5,64,
+Samuel Adams White Ale,0.054,15,3,64,
+Samuel Adams Blackberry Witbier,0.055,5,5,38,
+Samuel Adams Holiday Porter,0.058,27,25,78,
+Samuel Adams Longshot Mile High Barleywine,0.098,52,15,85,
+Samuel Adams Triple Bock,0.18,52,15,35,
+Samuel Adams Boston Ale,0.051,32,8,61,
+Samuel Adams Noble Pils,0.052,33,4,81,
+Samuel Adams Brown Ale,0.054,30,27,67,
+Samuel Adams James Madison Dark Wheat Ale,0.057,14,19,50,
+Samuel Adams Cherry Wheat,0.054,5,6,33,
+Samuel Adams Cranberry Lambic,0.059,5,5,21,
+Samuel Adams Rauch Bier,0.05,25,17,55,
+Samuel Adams Coffee Stout,0.058,55,35,66,
+Samuel Adams Cream Stout,0.049,55,29,86,
+Samuel Adams Vienna Style,0.049,24,13,65,
+Mackeson Xxx Stout,0.049,55,35,90,
+Samuel Adams Longshot Old Ben Ale,0.09,45,16,85,
+Samuel Adams Imperial Pilsner,0.088,35,4,90,
+Samuel Adams India Pale Ale (ipa),0.059,50,11,71,
+Samuel Adams George Washington Porter,0.057,27,25,55,
+Samuel Adams Honey Porter,0.053,27,25,61,
+Samuel Adams Black Lager,0.049,27,45,80,
+Samuel Adams Scotch Ale,0.054,18,13,73,
+Samuel Adams Longshot Weizenbock,0.072,22,17,88,
+Samuel Adams Winter Lager,0.058,22,17,78,
+Samuel Adams Coastal Wheat,0.053,23,6,35,
+Samuel Adams Hefeweizen,0.054,23,5,59,
+Samuel Adams Utopias,0.27,52,15,90,
+Samuel Adams Boston Lager,0.049,20,4,67,
+Sam Adams Light,0.041,20,4,23,
+Samuel Adams Irish Red Ale,0.055,23,10,60,
+Harpoon 100 Barrel Series #30 – Island Creek Oyster Stout,0.045,37,32,50,
+Harpoon 100 Barrel Series #04 - Barleywine,0.103,52,15,73,
+Harpoon 100 Barrel Series #10 - Triticus,0.115,52,15,88,
+Harpoon Belgian Pale Ale,0.059,25,6,73,
+Harpoon Ufo White,0.048,15,4,48,
+Harpoon Leviathan Imperial IPA,0.1,90,12,88,
+Harpoon Munich Dark,0.056,23,21,75,
+Harpoon Summer Beer,0.05,25,6,38,
+Harpoon 100 Barrel Series #30 - Island Creek Oyster Stout,0.055,55,35,86,
+Harpoon IPA,0.059,50,8,80,
+Harpoon Celtic Ale,0.054,25,8,65,
+Harpoon Octoberfest,0.055,24,11,66,
+Harpoon 100 Barrel Series #22 - Steve Stewarts Firth Of Forth,0.054,18,13,68,
+Harpoon 100 Barrel Series #08 - Smoked Porter,0.057,25,17,76,
+Harpoon Brown,0.052,30,27,50,
+Ufo Hefeweizen,0.048,19,6,85,
+Dogfish Head Weedwacker Wit,0.045,15,3,48,
+Dogfish Head Golden Era (shower),0.09,35,4,86,
+Dogfish Head Theobroma,0.09,6,17,86,
+Dogfish Head Snow Blower Belgian Ale,0.06,25,11,55,
+Dogfish Head Red And White,0.1,50,6,87,
+Dogfish Head Lawnmower Light,0.043,18,4,26,
+Dogfish Head Zwaanendale,0.08,24,18,85,
+Dogfish Head Au Courant,0.07,5,5,55,
+Dogfish Head Sahtea,0.09,6,12,88,
+Dogfish Head Burton Baton,0.1,90,10,90,
+Dogfish Head Squall IPA,0.09,90,10,89,
+Dogfish Head Festina Lente,0.07,5,5,63,
+Dogfish Head Chocolate Mild,0.045,17,18,8,
+Dogfish Head Chateau Jiahu,0.09,6,6,80,
+Dog Fish Head Midas Touch,0.09,12,6,90,
+Dogfish Head Liquor De Malt,0.07,25,5,60,
+Dogfish Head 120 Minute IPA,0.18,85,15,83,
+Dogfish Head Olde School Barleywine,0.15,52,15,72,
+Dogfish Head My Antonia,0.075,35,4,88,
+Dogfish Head 90 Minute Imperial IPA,0.09,90,8,91,
+Dogfish Head Aprihop,0.07,5,5,75,
+Dogfish Head 60 Minute IPA,0.06,60,8,90,
+Dogfish Head Noble Rot,0.09,18,2,65,
+Dogfish Head World Wide Stout,0.18,70,35,92,
+Dogfish Head Raison D Etre,0.08,50,8,88,
+Dogfish Head Bitches Brew,0.1,70,35,58,
+Dogfish Head World Wide Stout 2001/2003-present (18%),0.18,70,35,91,
+Dogfish Head Black And Blue,0.1,5,6,86,
+Dogfish Head Oyster Stout,0.045,37,32,86,
+"Dogfish Head World Wide Stout 2003 (21%, Ca And Uk Release)",0.21,70,35,91,
+Dogfish Head Festina Peche,0.045,15,8,76,
+Dogfish Head Chicory Stout,0.052,22,35,89,
+Dogfish Head Palo Santo Marron,0.12,85,15,90,
+Dogfish Head Immort Ale,0.11,52,15,90,
+Dogfish Head Raison D Extra,0.185,85,15,90,
+Dogfish Head Fort,0.18,49,5,83,
+Wachusett Nut Brown Ale,0.052,30,27,56,
+Wachusett Winter Ale,0.061,52,15,71,
+Wachusett Blueberry,0.045,5,4,35,
+Wachusett Quinns Amber Ale,0.046,23,14,45,
+Wachusett Country Ale,0.051,22,5,50,
+Wachusett IPA,0.056,50,11,80,
+Wachusett Black Shack Porter,0.053,27,25,80,
+Wachusett Larry Imperial IPA,0.088,90,12,50,
+Leinenkugels Classic Amber,0.049,20,4,25,
+Leinenkugels Oktoberfest,0.051,24,11,26,
+Leinenkugels Fireside Nut Brown Ale,0.049,30,27,31,
+Leinenkugels Sunset Wheat,0.049,23,5,83,
+Leinenkugels Berry Weiss,0.047,5,5,21,
+Leinenkugels Honey Weiss Bier,0.049,23,5,20,
+Leinenkugels Big Butt Doppelbock,0.058,21,16,48,
+Leinenkugels Summer Shandy,0.042,5,5,23,
+Leinenkugels Red,0.049,14,18,36,
+Leinenkugels 1888 Bock,0.051,24,18,38,
+Leinenkugels Big Eddy Russian Imperial Stout,0.095,70,35,90,
+Leinenkugels Original,0.045,12,3,28,
+Sierra Nevada Stout,0.058,55,45,86,
+Sierra Nevada/dogfish Head Life & Limb (1 Year Later),0.1,85,15,50,
+Sierra Nevada Harvest Ale,0.067,50,8,50,
+Sierra Nevada Best Bitter Ale,0.043,30,9,68,
+Sierra Nevada Hoptimum,0.088,90,12,71,
+"Sierra Nevada 30th Anniversary Charlie, Fred & Kens Bock",0.083,27,9,88,
+Sierra Nevada 30th Anniversary Jack & Kens Ale,0.1,52,15,50,
+Sierra Nevada I.d.e.a.,0.07,50,11,54,
+Sierra Nevada Barrel Aged Scotch Ale,0.088,18,13,88,
+Sierra Nevada Rhymes Wit,0.047,15,3,8,
+Sierra Nevada Anniversary Ale,0.059,50,11,86,
+Sierra Nevada Ruthless Weiss Beer,0.054,12,5,60,
+Sierra Nevada Wood Aged Bigfoot,0.122,52,15,85,
+Sierra Nevada 30th Anniversary Fritz & Kens Stout,0.095,70,35,88,
+Sierra Nevada Nuthin' In Common,0.065,37,12,50,
+Sierra Nevada Wood-aged Old Ale,0.085,70,35,50,
+Sierra Nevada Weizenbock,0.066,22,17,88,
+Sierra Nevada Blonde Ale,0.043,22,5,61,
+Sierra Nevada Brown Ale,0.055,30,27,71,
+Sierra Nevada/dogfish Head Limb & Life,0.05,30,27,73,
+Sierra Nevada Southern Hemisphere Harvest,0.067,50,11,90,
+Sierra Nevada Summerfest Lager,0.053,20,4,50,
+Sierra Nevada Summerfest,0.05,20,6,50,
+Sierra Nevada 30th Anniversary Our Brewers Reserve – Grand Cru,0.1,85,15,50,
+Sierra Nevada Glissade Golden Bock,0.064,27,6,66,
+Sierra Nevada Old Chico Brand Crystal Wheat,0.048,23,5,48,
+Sierra Nevada Estate Brewers Harvest Ale,0.067,50,11,90,
+Sierra Nevada Kellerweis,0.048,15,6,85,
+Sierra Nevada Bigfoot,0.096,52,17,84,
+Sierra Nevada Torpedo Extra IPA,0.072,70,10,87,
+Sierra Nevada Tumbler,0.052,30,27,68,
+Sierra Nevada Porter,0.056,27,25,83,
+Sierra Nevada Stricklander,0.085,30,6,78,
+Sierra Nevada Celebration Ale,0.068,50,11,88,
+Sierra Nevada India Pale Ale,0.069,50,11,80,
+Sierra Nevada/dogfish Head Life & Limb,0.102,85,15,50,
+Stone 7th Anniversary Ale,0.077,85,15,50,
+Stone Old Guardian (vintages 2004 And Later),0.113,52,15,90,
+Symposium Ale (2004 Craft Brewers Conference),0.075,50,16,85,
+Dogfish Head/victory/stone Saison Du Buff,0.068,28,10,50,
+Brewdog Cambridge Stone Juxtaposition Black Pilsner,0.1,35,4,90,
+Stone 13th Anniversary Ale,0.095,85,15,90,
+Stone 8th Anniversary Ale,0.078,85,15,90,
+Stone 9th Anniversary Ale,0.078,85,15,88,
+Stone 07.07.07 Vertical Epic Ale (red Wine Barrel Aged),0.084,50,16,90,
+Arrogant Bastard Ale,0.072,85,15,50,
+Double Bastard Ale,0.1,85,15,50,
+Stone 04.04.04 Vertical Epic Ale,0.085,50,16,88,
+Stone 05.05.05 Vertical Epic Ale,0.085,50,16,90,
+Stone 07.07.07 Vertical Epic Ale,0.084,50,16,50,
+Stone 08.08.08 Vertical Epic Ale,0.084,50,16,90,
+Stone Sublimely Self Righteous Ale,0.087,60,25,91,
+Sawyers Triple,0.076,30,6,90,
+Stone 10th Anniversary IPA,0.1,90,12,50,
+Ken Schmidt Maui Stone Kona Coffee Macadamia Coconut Porter,0.085,38,28,90,
+Stone 6th Anniversary Porter,0.08,38,28,91,
+Stone 5th Anniversary IPA,0.085,50,11,90,
+Stone Cali-belgique IPA (cali-belgiÃ«),0.069,50,11,50,
+Stone Estate Grown Sour Peach,0.033,6,2,50,
+Stone 10th Anniversary IPA (3 Years Later),0.088,90,12,50,
+Stone 11th Anniversary Ale (2 Years Later),0.1,85,15,50,
+Double Bastard Ale – 2008,0.1,85,15,50,
+Stone 12th Anniversary Bitter Chocolate Oatmeal Stout,0.092,70,35,90,
+Stone Bourbon Barrel Russian Imperial Stout,0.108,70,35,91,
+Stone Imperial Russian Stout,0.105,70,35,50,
+Stone 14th Anniversary Emperial IPA,0.089,90,12,91,
+Baird/ Ishii/ Stone Japanese Green Tea IPA,0.088,90,12,50,
+Jason Fields & Kevin Sheppard / Tröegs / Stone Cherry Chocolate Stout,0.045,37,32,50,
+Stone Funky Sour,0.033,6,2,50,
+Stone Belgo Anise Imperial Russian Stout,0.1,70,35,50,
+Stone 7th Anniversary Ale (7+ Years Later),0.1,85,15,50,
+Stone/green Flash/pizza Port Carlsbad Highway 78 Scotch Ale,0.036,18,13,50,
+Victory Stone Dogfish Head Saison Du Buff,0.06,28,10,50,
+Dogfish Head Victory Stone Saison Du Buff,0.06,28,10,50,
+Stone Dogfish Head Victory Saison Du Buff,0.06,28,10,88,
+Stone Old Guardian 2010,0.1,52,15,50,
+Stone Imperial Russian Stout – Vintage 2000,0.1,70,35,50,
+Stone 12th Anniversary Ale (1 Year Later),0.1,70,35,50,
+Stone Old Guardian Barleywine 2009,0.1,52,15,50,
+Stone Imperial Russian Stout 2009,0.1,70,35,50,
+Stone Imperial Russian Stout 2004,0.1,70,35,50,
+Stone Old Guardian Barleywine 2007,0.1,52,15,50,
+Stone Old Guardian Barley Wine – 2004,0.1,52,15,50,
+Stone Brandy Barrel Aged Double Bastard 2006,0.1,85,15,50,
+Stone Old Guardian Belgo-barley Wine,0.1,52,8,50,
+Stone Levitation Ale,0.044,32,10,87,
+Stone Ruination IPA,0.077,90,10,90,
+Stone India Pale Ale (ipa),0.069,50,11,91,
+Stonewall Ale,0.122,52,15,90,
+Stone 03.03.03 Vertical Epic Ale,0.09,50,16,90,
+Stone 09.09.09 Vertical Epic Ale,0.085,50,16,90,
+Stone Smoked Porter,0.059,27,29,90,
+Stone 06.06.06 Vertical Epic Ale,0.087,20,14,90,
+Alesmith Mikkeller Stone Belgian Style Tripel Ale,0.087,30,6,86,
+Stone Old Guardian (vintages Through 2003),0.099,52,15,91,
+Oaked Arrogant Bastard Ale,0.072,85,15,54,
+Stone 21st Amendment Firestone Walker El Camino (un)real Black Ale,0.095,85,15,90,
+Stone Brandy Barrel Double Bastard,0.1,85,15,90,
+Stone Oaked Double Bastard,0.1,85,15,90,
+Stone Bourbon Barrel Old Guardian Barley Wine,0.113,52,15,90,

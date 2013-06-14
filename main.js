@@ -98,7 +98,7 @@
   function brush() {
     var actives = dimensions.filter(function (p) { return !y[p].brush.empty(); }),
         extents = actives.map(function (p) { return y[p].brush.extent(); }),
-        activelist = actives.length === 0 ? beers.slice() : [];
+        activelist = [];
     lines.classed("fade", function (d) {
       return !actives.every(function (p, i) {
         return extents[i][0] <= d[p] && d[p] <= extents[i][1];
