@@ -1,12 +1,14 @@
 (function () {
   "use strict";
 
-  var margin = [30, 0, 10, 20],
+  var margin = [30, 20, 10, 20],
       normalAxis = d3.svg.axis().orient("left"),
       percentFormat = d3.format(".0%"),
       percentAxis = d3.svg.axis().orient("left").tickFormat(percentFormat),
       dimensions = ["SRM", "IBU", "ABV", "Rating"],
       w, h, x, y, line, lines, beers, axis, searchString = "", hovering = [];
+  
+  d3.select("body").on('touchmove', function () { d3.event.preventDefault(); });
 
   // read input data, render chart, and setup listener to re-render on resize
   d3.csv("beer.csv", function (data) {
@@ -22,8 +24,8 @@
 
     // Setup dimensions and scales
     axis = {};
-    w = document.width * 0.7 - margin[1] - margin[3],
-    h = document.height - 10 - margin[0] - margin[2],
+    w = document.width - margin[1] - margin[3],
+    h = document.height * 0.5 - margin[0] - margin[2],
     x = d3.scale.ordinal().rangePoints([0, w], 0.3),
     y = y || {},
     line = d3.svg.line().interpolate("cardinal");
@@ -45,9 +47,17 @@
     });
     axis['ABV'] = percentAxis;
 
-    // Create and render all of the lines
+    // Create and render all of the faded lines
+    svg.append("g")
+      .attr("class", "background")
+      .selectAll("path")
+        .data(beers)
+      .enter().append("path")
+        .attr("d", path);
+
+    // Create and render all of the foreground lines
     lines = svg.append("g")
-      .attr("class", "linecontainer")
+      .attr("class", "foreground")
       .selectAll("path")
         .data(beers)
       .enter().append("path")
@@ -119,7 +129,7 @@
     activelist
       .sort(function (a, b) { return d3.ascending(a.name, b.name); })
       .sort(function (a, b) { return d3.descending(a.Rating, b.Rating); });
-    activelist = activelist.slice(0, h / 15);
+    activelist = activelist.slice(0, Math.ceil((h - 26 - 18) / 18));
 
     // update existing rows
     var list = d3.select("#beer-list")
