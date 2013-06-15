@@ -6,7 +6,7 @@
       percentFormat = d3.format(".0%"),
       percentAxis = d3.svg.axis().orient("left").tickFormat(percentFormat),
       dimensions = ["SRM", "IBU", "ABV", "Rating"],
-      w, h, x, y, line, lines, beers, axis;
+      w, h, x, y, line, lines, beers, axis, searchString = "", hovering = [];
 
   // read input data, render chart, and setup listener to re-render on resize
   d3.csv("beer.csv", function (data) {
@@ -25,7 +25,7 @@
     w = document.width * 0.7 - margin[1] - margin[3],
     h = document.height - 10 - margin[0] - margin[2],
     x = d3.scale.ordinal().rangePoints([0, w], 0.3),
-    y = {},
+    y = y || {},
     line = d3.svg.line().interpolate("cardinal");
 
     // Create the main SVG container
@@ -38,7 +38,7 @@
     // Extract the list of dimensions and create a scale for each.
     x.domain(dimensions);
     dimensions.forEach(function (d) {
-      y[d] = d3.scale.linear()
+      y[d] = (y[d] || d3.scale.linear())
         .domain(d3.extent(beers, function (p) { return +p[d]; }))
         .range([h, 0]);
       axis[d] = normalAxis;
@@ -53,15 +53,13 @@
       .enter().append("path")
         .attr("stroke", srmColor)
         .each(function (d) { d.line = d3.select(this); })
-        .attr("d", path)
-        .on('mouseover', hoveroverline)
-        .on('mouseout', hoveroutline);
+        .attr("d", path);
 
     // Add a group element for each dimension.
     var g = svg.selectAll(".dimension")
         .data(dimensions)
       .enter().append("g")
-        .attr("class", "dimension")
+        .attr("class", function (d) { return "dimension " + d; })
         .attr("transform", function (d) { return "translate(" + x(d) + ")"; });
 
     // Add an axis and title.
@@ -76,12 +74,16 @@
     // Add and store a brush for each axis.
     g.append("g")
         .attr("class", "brush")
-        .each(function (d) { d3.select(this).call(y[d].brush = d3.svg.brush().y(y[d]).on("brush", brush)); })
+        .each(function (d) {
+          y[d].brush = (y[d].brush || d3.svg.brush());
+          d3.select(this).call(y[d].brush.y(y[d]).on("brush", brush));
+          d3.select("." + d + " .brush").call(y[d].brush.extent(y[d].brush.extent()));
+        })
       .selectAll("rect")
         .attr("x", -8)
         .attr("width", 16);
 
-    updateBeerList(beers);
+    brush();
   }
 
   // apply the correct color to use for a beer based on its SRM
@@ -98,13 +100,16 @@
   function brush() {
     var actives = dimensions.filter(function (p) { return !y[p].brush.empty(); }),
         extents = actives.map(function (p) { return y[p].brush.extent(); }),
+        re = new RegExp("\\b" + d3.requote(searchString), "i"),
         activelist = [];
+
     lines.classed("fade", function (d) {
       return !actives.every(function (p, i) {
         return extents[i][0] <= d[p] && d[p] <= extents[i][1];
-      }) || !activelist.push(d);
+      }) || !re.test(d.name) || !activelist.push(d);
     });
     updateBeerList(activelist);
+    hovering.forEach(hoveroutcell);
   }
 
   // display the beer list
@@ -135,22 +140,14 @@
   function hoverovercell(d) {
     d.line.classed('hover', true).moveToFront();
     if (d.row) { d.row.classed('hover', true); }
+    hovering.push(d);
   }
 
   // on mouseout of data, remove hover class from line and row
   function hoveroutcell(d) {
     d.line.classed('hover', false);
     if (d.row) { d.row.classed('hover', false); }
-  }
-
-  // on mouseover line, add hover class to row if shown
-  function hoveroverline(d) {
-    if (d.row) { d.row.classed('hover', true); }
-  }
-
-  // on mouseout of line, remove hover class row
-  function hoveroutline(d) {
-    if (d.row) { d.row.classed('hover', false); }
+    hovering = hovering.filter(function (e) { return d != e; });
   }
 
   // creates a table row
@@ -172,6 +169,30 @@
     row.append("div")
       .attr('class', clazz)
       .text(function (d) { return format(d[attr]); });
+  }
+
+
+  // setup search
+
+  var searchInput = d3.select(".search input")
+      .on("keyup", function () {
+        if (d3.event.keyCode === 27) {
+          this.value = "";
+          this.blur();
+        }
+        search(this.value.trim());
+      });
+
+  var searchClear = d3.select(".search .search-clear")
+      .on("click", function () {
+        searchInput.property("value", "").node().blur();
+        search();
+      });
+
+  function search(value) {
+    searchString = value || "";
+    searchClear.style("display", value ? null : "none");
+    brush();
   }
 
   // add utility to move an SVG selection to the front
