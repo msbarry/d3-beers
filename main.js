@@ -147,7 +147,7 @@
   function hoveroutcell(d) {
     d.line.classed('hover', false);
     if (d.row) { d.row.classed('hover', false); }
-    hovering = hovering.filter(function (e) { return d != e; });
+    hovering = hovering.filter(function (e) { return d !== e; });
   }
 
   // creates a table row
