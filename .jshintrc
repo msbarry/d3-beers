@@ -16,6 +16,7 @@
   "strict": true,
   "trailing": true,
   "browser": true,
+  "latedef": false,
   "globals": {
     "d3": true
   }

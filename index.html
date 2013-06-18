@@ -2,17 +2,22 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <title>Beers</title>
+    <title>Beerfilter</title>
     <link rel="stylesheet" href="main.css">
   </head>
   <body>
+<!--[if lte IE 8]>
+    <p class="chromeframe">You are using an outdated browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to view this chart.</p>
+<![endif]-->
+<!--[if gt IE 8]><!-->
+    <div class="search">
+      <input type="text" placeholder="Find a beer">
+      <button style="display:none;" class="search-clear">X</button>
+    </div>
+    <h1>Beerfilter</h1>
+    <div class="author">Michael Barry</div>
+    <div id="chart"></div>
     <div class="beer-list">
-      <div class="search">
-        <input type="text" placeholder="Find a beer">
-        <button style="display:none;" class="search-clear">X</button>
-      </div>
       <div class="beer header">
         <div class="name">Name (<span id="count"></span> / <span id="total"></span>)</div>
         <div class="stat">SRM</div>
@@ -22,9 +27,9 @@
       </div>
       <div id="beer-list"></div>
     </div>
-    <div id="chart"></div>
     <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
     <script src="srm2rgb.js"></script>
     <script src="main.js"></script>
+<!-- <![endif]-->
   </body>
 </html>

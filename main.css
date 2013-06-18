@@ -1,21 +1,41 @@
-html {
-  height: 100%;
-}
 body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
   font-size: 12px;
   font-family: Arial;
+  width: 970px;
+  margin: 1em auto 0.3em auto;
 }
+
+h1 {
+  font-size: 24px;
+  font-weight: normal;
+}
+
 #chart {
-  height: 50%;
+  width: 100%;
+  height: 400px;
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+.chromeframe {
+  margin: 3em auto 0 auto;
+  text-align: center;
+}
+
+.chromeframe a {
+  text-decoration: none;
+}
+
+.author {
+  font-size: 10px;
+  color: #aaa;
+  margin-top: -20px;
 }
 
 path {
   fill: none;
   stroke-width: 1px;
-  stroke-opacity: .8;
+  stroke-opacity: .5;
 }
 
 .background path {
@@ -51,11 +71,10 @@ path {
 
 
 .beer-list {
-  width: 90%;
+  width: 100%;
   left: 5%;
   max-height: 50%;
   height: 50%;
-  position: absolute;
   top: 50%;
   overflow-y: hidden;
   overflow-x: hidden;
@@ -73,6 +92,10 @@ path {
   background: #dde;
 }
 
+.beer-list .header {
+  font-weight: bold;
+}
+
 .beer-list .beer div {
   float: left;
   text-align: right;
@@ -86,26 +109,29 @@ path {
 }
 
 .search {
-  float: left;
+  float: right;
   position: relative;
-  margin: 0;
+  margin-top: 10px;
   padding: 0;
-  max-width: 100%;
   width: 30em;
 }
 
 .search input {
-  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
-  -moz-box-sizing: border-box;    /* Firefox, other Gecko */
-  box-sizing: border-box;         /* Opera/IE 8+ */
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
   width: 100%;
   height: 26px;
   font: 12px sans-serif;
-  padding: 0 8px;
+  padding: 0 28px 0 8px;
   margin: 0;
   border: solid 1px #ccc;
   border-radius: 4px;
   box-shadow: inset 0 1px 2px rgba(0,0,0,0.08);
+}
+
+.search input::-ms-clear {
+  display: none;
 }
 
 .search .search-clear {
