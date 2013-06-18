@@ -20,10 +20,12 @@ h1 {
 .chromeframe {
   margin: 3em auto 0 auto;
   text-align: center;
+  color: #888;
 }
 
 .chromeframe a {
   text-decoration: none;
+  color: #77f;
 }
 
 .author {
