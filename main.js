@@ -38,6 +38,8 @@
     .append("g")
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
+  var tip = d3.select(".tip");
+  
   var legend = d3.select("#legend").append("svg")
       .attr("height", legendHeight)
       .attr("width", w)
@@ -45,11 +47,11 @@
       .attr("transform", "translate(" + margin.left + ",0)");
 
   legend.selectAll("rect")
-      .data(d3.range(0, 40))
+      .data(d3.range(0, 30))
       .enter()
     .append("rect")
       .attr("y", 0)
-      .attr("x", function (d) { return (40 - d) * 2; })
+      .attr("x", function (d) { return (30 - d) * 2; })
       .attr("height", legendHeight)
       .attr("width", 2)
       .attr("fill", window.srm2rgb);
@@ -57,7 +59,7 @@
   var legendLeft = legend.append("text")
       .style("text-anchor", "start")
       .style("font-size", 12)
-      .attr("x", 90)
+      .attr("x", 70)
       .attr("y", legendHeight / 2 + 6);
 
   legendLeft.append("tspan").text("Line Color").attr("class", "em");
@@ -112,7 +114,10 @@
       .enter().append("path")
         .attr("stroke", srmColor)
         .each(function (d) { d.line = d3.select(this); })
-        .attr("d", path);
+        .attr("d", path)
+        .on("mouseover", mouseover)
+        .on("mouseout", mouseout)
+        .on("mouseleave", mouseout);
 
     // Add a group element for each dimension.
     var g = svg.selectAll(".dimension")
@@ -156,6 +161,7 @@
 
     // Handles a brush event, toggling the display of foreground lines and updating list
     function brush() {
+      mouseout();
       var actives = dimensions.filter(function (p) { return !y[p].brush.empty(); }),
           extents = actives.map(function (p) { return y[p].brush.extent(); }),
           re = new RegExp("\\b" + d3.requote(searchString), "i"),
@@ -251,6 +257,38 @@
       searchString = value || "";
       searchClear.style("display", value ? null : "none");
       brush();
+    }
+
+    function mouseover(d) {
+      if (d.mouseover) { return; }
+      mouseout();
+      d.mouseover = true;
+      lines.filter(function (c) { return c === d; })
+        .classed("active", true)
+        .each(function () {
+          this.parentNode.appendChild(this);
+        });
+
+      var dx = d3.mouse(svg.node())[0],
+          dy = d3.mouse(svg.node())[1];
+
+      tip.style("display", null)
+          .style("top", (dy + margin.top - (+tip.style("height").replace("px", "")) - 5) + "px")
+          .style("left", (dx + margin.left - (+tip.style("width").replace("px", "")) - 5) + "px");
+
+      tip.selectAll(".abv").text(percentFormat(d.ABV));
+      tip.selectAll(".ibu").text(d.IBU);
+      tip.selectAll(".rating").text(d.Rating);
+      var name = d.name.length > 40 ? d.name.substr(0, 40) + "..." : d.name;
+      tip.selectAll(".name").text(name);
+      tip.selectAll(".srm").text(d.SRM);
+    }
+
+    function mouseout() {
+      tip.style("display", "none");
+      lines.filter(".active")
+        .classed("active", false)
+        .each(function (d) { d.mouseover = false; });
     }
   });
 
