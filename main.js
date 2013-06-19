@@ -5,12 +5,31 @@
       TABLE_MAX_SIZE = 10,
       w = 970 - margin.left - margin.right,
       h = 400 - margin.top - margin.bottom,
+      legendHeight = 20,
       normalAxis = d3.svg.axis().orient("left"),
       percentFormat = d3.format(".0%"),
       percentAxis = d3.svg.axis().orient("left").tickFormat(percentFormat),
       rightAxis = d3.svg.axis().orient("right"),
       dimensions = ["SRM", "IBU", "ABV", "Rating"],
       searchString = "", hovering = [];
+  var axis = {
+    SRM: {
+      title: "Darkness",
+      axis: normalAxis
+    },
+    IBU: {
+      title: "Bitterness",
+      axis: normalAxis
+    },
+    ABV: {
+      title: "Alcohol Content",
+      axis: percentAxis
+    },
+    Rating: {
+      title: "User Rating",
+      axis: rightAxis
+    }
+  };
 
   // Create the main SVG container
   var svg = d3.select("#chart").append("svg")
@@ -19,11 +38,53 @@
     .append("g")
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
+  var legend = d3.select("#legend").append("svg")
+      .attr("height", legendHeight)
+      .attr("width", w)
+    .append("g")
+      .attr("transform", "translate(" + margin.left + ",0)");
+
+  legend.selectAll("rect")
+      .data(d3.range(0, 40))
+      .enter()
+    .append("rect")
+      .attr("y", 0)
+      .attr("x", function (d) { return (40 - d) * 2; })
+      .attr("height", legendHeight)
+      .attr("width", 2)
+      .attr("fill", window.srm2rgb);
+
+  var legendLeft = legend.append("text")
+      .style("text-anchor", "start")
+      .style("font-size", 12)
+      .attr("x", 90)
+      .attr("y", legendHeight / 2 + 6);
+
+  legendLeft.append("tspan").text("Line Color").attr("class", "em");
+  legendLeft.append("tspan").text(" indicates beer color");
+
+  var legendMiddle = legend.append("text")
+      .style("text-anchor", "middle")
+      .style("font-size", 12)
+      .attr("x", (w - margin.right) / 2)
+      .attr("y", legendHeight / 2 + 6);
+
+  legendMiddle.append("tspan").text("Click and drag on the axes").attr("class", "em");
+  legendMiddle.append("tspan").text(" to filter");
+
+  var legendRight = legend.append("text")
+      .style("text-anchor", "end")
+      .style("font-size", 12)
+      .attr("x", w - margin.left)
+      .attr("y", legendHeight / 2 + 6);
+
+  legendRight.append("tspan").text("Type in the search box").attr("class", "em");
+  legendRight.append("tspan").text(" to find a beer");
+
   // read input data, render chart, and setup listener to re-render on resize
   d3.csv("beer.csv", function (beers) {
     // Setup dimensions and scales
-    var axis = {},
-        x = d3.scale.ordinal().rangePoints([0, w], 0.05),
+    var x = d3.scale.ordinal().rangePoints([0, w], 0.1),
         y = y || {},
         line = d3.svg.line().interpolate("cardinal");
 
@@ -33,10 +94,7 @@
       y[d] = (y[d] || d3.scale.linear())
         .domain(d3.extent(beers, function (p) { return +p[d]; }))
         .range([h, 0]);
-      axis[d] = normalAxis;
     });
-    axis['ABV'] = percentAxis;
-    axis['Rating'] = rightAxis;
 
     // Create and render all of the faded lines
     svg.append("g")
@@ -66,11 +124,11 @@
     // Add an axis and title.
     g.append("g")
         .attr("class", "axis")
-        .each(function (d) { d3.select(this).call(axis[d].scale(y[d])); })
+        .each(function (d) { d3.select(this).call(axis[d].axis.scale(y[d])); })
       .append("text")
         .attr("text-anchor", "middle")
         .attr("y", -9)
-        .text(String);
+        .text(function (d) { return axis[d].title; });
 
     // Add and store a brush for each axis.
     g.append("g")
@@ -160,7 +218,7 @@
         .each(function (d) { d.row = d3.select(this); });
 
       addCell(row, 'name', 'name');
-      dimensions.forEach(function (d) { addCell(row, d, d, axis[d].tickFormat()); });
+      dimensions.forEach(function (d) { addCell(row, d, d, axis[d].axis.tickFormat()); });
     }
 
     // creates a cell in the table

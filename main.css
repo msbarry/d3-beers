@@ -14,7 +14,24 @@ h1 {
   width: 100%;
   height: 400px;
   margin-top: 10px;
+}
+
+#legend {
+  float: left;
   margin-bottom: 30px;
+}
+
+#legend text {
+  fill: #555;
+}
+
+#legend .em {
+  font-weight: bold;
+  fill: #111;
+}
+
+#legend rect {
+  opacity: 0.8;
 }
 
 .chromeframe {
